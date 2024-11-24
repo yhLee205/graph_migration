@@ -13,27 +13,27 @@ public class Bfs {
 
     public void performBFS(int startVertex) {
         boolean[] visited = new boolean[numberOfVertices];
-        List<Integer> bfsOrder = new ArrayList<>();
-        Queue<Integer> queue = new LinkedList<>();
-        queue.add(startVertex);
+        List<Integer> bfsOrderResult = new ArrayList<>();
+        Queue<Integer> que = new LinkedList<>();
+        que.add(startVertex);
         visited[startVertex] = true;
 
-        while (!queue.isEmpty()) {
-            int currentVertex = queue.poll();
-            bfsOrder.add(currentVertex);
+        while (!que.isEmpty()) {
+            int currentVertex = que.poll();
+            bfsOrderResult.add(currentVertex);
 
             for (int i = 0; i < numberOfVertices; i++) {
                 if (graph[currentVertex][i] != null && graph[currentVertex][i] > 0 && !visited[i]) {
-                    queue.add(i);
+                    que.add(i);
                     visited[i] = true;
                 }
             }
         }
 
-        printBFSResult(bfsOrder);
+        printBfsResult(bfsOrderResult);
     }
 
-    private void printBFSResult(List<Integer> bfsOrder) {
+    private void printBfsResult(List<Integer> bfsOrder) {
         System.out.print("너비 우선 탐색  \n");
         for (int i = 0; i < bfsOrder.size(); i++) {
             System.out.print((bfsOrder.get(i) + 1));
